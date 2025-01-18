@@ -3,7 +3,6 @@ app.controller('bookSearchController', ['$scope', 'bookservice', function($scope
     $scope.BookData = null;
     $scope.error = null;
 
-    // Fetch movies based on the search query
     $scope.searchBooks = function() {
         if ($scope.searchQuery) {
             bookservice.searchBooks($scope.searchQuery)
