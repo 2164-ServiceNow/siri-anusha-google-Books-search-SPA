@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="BookApp" lang="en">
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script> 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Bash!</title>
+    <base href="/">
+    <!-- AngularJS Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
 </head>
 <body>
     
+    <div ng-view></div>
+    
+    <!-- Application Scripts -->
+    <script src="app/app.js"></script>
+    <script src="app/controller/mainController.js"></script>
+    <!--<script src="app/controller/movieListController.js"></script>
+    <script src="app/controller/movieDetailsController.js"></script>
+    <script src="app/controller/topRatedMoviesController.js"></script>
+    <script src="app/controller/topRatedMovieDetails.js"></script>-->
+    <script src="app/service/bookService.js"></script>
+    <script src="app/controller/bookSearchController.js"></script>
+
 </body>
 </html>

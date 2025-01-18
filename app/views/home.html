@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Bash!</title>
+</head>
+<body>
+    <div>
+        <h1>{{ message }}</h1>
+        <a href="/Books">View All Books</a>
+        <br>
+    </div>
+
+    <div ng-controller="BookSearchController">
+        <h1>book Search</h1>
+        <input type="text" ng-model="searchQuery" placeholder="Enter Book name" />
+        <button ng-click="searchBooks()">Search</button>
+
+        <div ng-if="BookData">
+            <h2>Book Details:</h2>
+            <p><strong>Name:</strong> {{ BookData.title }}</p>
+            <p><strong>Description:</strong> {{ BookData.overview }}</p>
+            <img ng-src="https://image.tmdb.org/t/p/w500{{ movieData.poster_path }}" alt="{{ movie.title }}" class="movie-poster">
+            <p><strong>Release Date:</strong>{{ BookData.release_date }}</p>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/service/bookservice.js"></script>
+    <script src="/app/controller/bookSearchController.js"></script>
+
+</body>
+</html>
