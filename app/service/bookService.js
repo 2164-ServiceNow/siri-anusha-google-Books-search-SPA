@@ -1,14 +1,14 @@
 app.service('bookService', function ($http) {
     const BASE_URL = 'https://www.googleapis.com/books/v1';
     const SEARCH_URL = `${BASE_URL}/volumes`; // Endpoint to search for books
-    const API_KEY = 'AIzaSyBN3tQZ2EA5thCZiBw6tmbl0qQxUbETCSM';
+    const API_KEY = 'AIzaSyBN3tQZ2EA5thCZiBw6tmbl0qQxUbETCSM'; // Replace with your Google API Key
 
     // Fetch a list of books based on a query
-    this.getBooks = function (query, startIndex = 0, maxResults = 10) {
-        return $http.get(`${SEARCH_URL}?q=${encodeURIComponent(query)}&startIndex=${startIndex}&maxResults=${maxResults}&key=${API_KEY}`)
+    this.searchBooks = function (query, page = 1, maxResults = 10) {
+        return $http.get(`${SEARCH_URL}?q=${encodeURIComponent(query)}&startIndex=${(page - 1) * maxResults}&maxResults=${maxResults}&key=${API_KEY}`)
             .then(response => response.data)
             .catch(error => {
-                console.error(`Error fetching books with query "${query}":`, error);
+                console.error(`Error searching for books with query "${query}":`, error);
                 return null;
             });
     };
@@ -21,5 +21,10 @@ app.service('bookService', function ($http) {
                 console.error(`Error fetching book details for ID "${bookId}":`, error);
                 return null;
             });
+    };
+
+    // Fetch popular books (Not available in Google Books API, so using a random set or a pre-defined query)
+    this.getBooks = function (page = 1, maxResults = 10) {
+        return this.searchBooks('bestsellers', page, maxResults);
     };
 });

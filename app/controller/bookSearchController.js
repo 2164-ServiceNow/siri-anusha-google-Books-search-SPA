@@ -1,27 +1,39 @@
-app.controller('bookSearchController', ['$scope', 'bookservice', function($scope, bookservice) {
+app.controller('bookController', function ($scope, bookService) {
+    $scope.books = [];
+    $scope.bookDetails = null;
     $scope.searchQuery = '';
-    $scope.BookData = null;
-    $scope.error = null;
+    $scope.loading = false;
 
-    // Fetch movies based on the search query
-    $scope.searchBooks = function() {
-        if ($scope.searchQuery) {
-            bookservice.searchBooks($scope.searchQuery)
-                .then(function(data) {
-                    if (data && data.results && data.results.length > 0) {
-                        $scope.BookData = data.results[0]; // Assuming we're showing only the first result
-                        $scope.error = null;
-                    } else {
-                        $scope.BookData = null;
-                        $scope.error = 'No Books found. Please try a different query.';
-                    }
-                })
-                .catch(function() {
-                    $scope.error = 'Error fetching Book. Please try again later.';
-                    $scope.BookData = null;
-                });
-        } else {
-            $scope.error = 'Please enter a search query.';
-        }
+    // Search books based on a query
+    $scope.searchBooks = function () {
+        $scope.loading = true;
+        bookService.searchBooks($scope.searchQuery).then(data => {
+            $scope.books = data.items || [];
+            $scope.loading = false;
+        }).catch(() => {
+            $scope.loading = false;
+        });
     };
-}]);
+
+    // Get book details by ID
+    $scope.getBookDetails = function (bookId) {
+        $scope.loading = true;
+        bookService.getBookDetails(bookId).then(data => {
+            $scope.bookDetails = data;
+            $scope.loading = false;
+        }).catch(() => {
+            $scope.loading = false;
+        });
+    };
+
+    // Get default list of books
+    $scope.getBooks = function () {
+        $scope.loading = true;
+        bookService.getBooks().then(data => {
+            $scope.books = data.items || [];
+            $scope.loading = false;
+        }).catch(() => {
+            $scope.loading = false;
+        });
+    };
+});
