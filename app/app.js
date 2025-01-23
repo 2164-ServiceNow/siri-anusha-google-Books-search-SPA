@@ -10,13 +10,17 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: 'app/views/viewBooks.html',
             controller: 'viewBooksController'
         })
+        .when('/book/:bookTitle', {
+            templateUrl: '/app/views/bookDetails.html',
+            controller: 'bookDetailsController'
+        })
         .when('/books/:bookName', {
             templateUrl: 'app/views/bookDetails.html',
             controller: 'bookDetailsController'
         })
 
         .otherwise({
-            redirectTo: '/'
+            redirectTo: '/books'
         });
 
     $locationProvider.html5Mode({

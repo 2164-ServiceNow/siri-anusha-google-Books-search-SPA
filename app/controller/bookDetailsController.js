@@ -1,24 +1,26 @@
 app.controller('bookDetailsController', function ($scope, $routeParams, bookService) {
-    var bookName = $routeParams.bookName.replace(/-/g, ' '); // Convert hyphens back to spaces
+    const bookTitle = $routeParams.bookTitle.replace(/-/g, ' '); // Decode the title
     $scope.loading = true;
 
-    // Function to get book details by title
-    $scope.fetchBookDetails = function (bookName) {
-        bookService.getBooks(1).then(function (data) {
-            if (data && data.results) {
-                var book = data.results.find(function (book) {
-                    return book.title.toLowerCase() === bookName.toLowerCase(); // Match book by title
-                });
-                if (book) {
-                    $scope.book = book;
-                } else {
-                    console.error('Book not found');
-                }
+    bookService.searchBooks(bookTitle).then(function (data) {
+        if (data && data.items && data.items.length > 0) {
+            const book = data.items.find(item => item.volumeInfo.title.toLowerCase() === bookTitle.toLowerCase());
+            if (book) {
+                $scope.book = {
+                    title: book.volumeInfo.title,
+                    description: book.volumeInfo.description || 'No description available',
+                    thumbnail: book.volumeInfo.imageLinks?.thumbnail || '',
+                    authors: book.volumeInfo.authors?.join(', ') || 'No authors available'
+                };
+            } else {
+                console.error('Book not found');
             }
-            $scope.loading = false;
-        });
-    };
-
-    // Fetch Book details by name
-    $scope.fetchBookDetails(bookName);
+        } else {
+            console.error('No books found for the given title');
+        }
+        $scope.loading = false;
+    }).catch(function (error) {
+        console.error('Error fetching book details:', error);
+        $scope.loading = false;
+    });
 });

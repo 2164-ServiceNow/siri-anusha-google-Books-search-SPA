@@ -3,28 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
     <title>Book Search</title>
 </head>
 <body>
-    <div class="book-container">        
+    <div class="book-container">
         <div ng-if="loading" class="loading-message">Loading Books...</div>
-    
-        <div class="book-grid" ng-if="!loading">
+        <div class="book-grid">
+            <!-- Corrected the bindings to match the mapped structure -->
             <div class="book-card" ng-repeat="book in books" ng-click="goToDetails(book.title)">
-                <img ng-src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}" class="movie-poster">
+                <img ng-src="{{ book.thumbnail }}" alt="{{ book.title }}" class="book-thumbnail">
                 <h2 class="book-title">{{ book.title }}</h2>
+                <p class="book-authors">{{ book.authors }}</p>
             </div>
+            
         </div>
-    
+
         <div class="pagination-controls">
             <button ng-click="prevPage()" ng-disabled="currentPage === 1">Previous</button>
             <button ng-click="nextPage()">Next</button>
         </div>
-    
+
         <p>Page {{ currentPage }}</p>
     </div>
-    
-    
 </body>
 </html>

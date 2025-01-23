@@ -7,13 +7,13 @@
 </head>
 <body>
     <div class="book-details-container" ng-if="!loading">
-        <h1>{{ Book.title }}</h1>
-        <img ng-src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}" class="movie-poster">
-        <p><strong>Release Date:</strong> {{ book.release_date }}</p>
-        <p><strong>Overview:</strong> {{ book.overview }}</p>
-        <p><strong>Rating:</strong> {{ book.vote_average }}</p>
-        <p><strong>Released On:</strong> {{ book.release_date }}</p>
+        <h1>{{ book.title }}</h1>
+        <img ng-src="{{ book.thumbnail }}" alt="{{ book.title }}">
+        <p><strong>Authors:</strong> {{ book.authors }}</p>
+        <p><strong>Description:</strong> {{ book.description }}</p>
     </div>
+    <div ng-if="loading">Loading book details...</div>
+    
     
     <div ng-if="loading">Loading book details...</div>
 
@@ -23,6 +23,7 @@
         <h1>Book Search</h1>
         <input type="text" ng-model="searchQuery" placeholder="Enter movie name" />
         <button ng-click="searchBooks()">Search</button>
+        <button ng-click = "searchforBooks()">search1</button>
 
         <div ng-if="bookData">
             <h2>Movie Details:</h2>
