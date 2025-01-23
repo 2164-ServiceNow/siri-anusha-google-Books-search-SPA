@@ -52,7 +52,7 @@ app.service('bookService', function ($http) {
     };
 
     // Fetch popular books by searching for 'bestsellers' (public query, no authentication)
-    this.getBooks = function (page = 1, maxResults = 10) {
+    this.getBooks = function (page = 1, maxResults = 12) {
         return this.searchBooks('bestsellers', page, maxResults);
     };
 });

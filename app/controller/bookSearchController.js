@@ -3,6 +3,8 @@ app.controller('bookSearchController', function ($scope, bookService) {
     $scope.bookDetails = null;
     $scope.searchQuery = '';
     $scope.loading = false;
+    $scope.searchValue = "";
+
 
     // Search books based on a query
     $scope.searchBooks = function () {
@@ -12,6 +14,7 @@ app.controller('bookSearchController', function ($scope, bookService) {
                 .then(function (data) {
                     if (data && data.items && data.items.length > 0) {
                         $scope.books = data.items; // Assuming we're showing all book results
+                        console.log(data.items)
                         $scope.error = null;
                     } else {
                         $scope.books = [];
@@ -96,3 +99,6 @@ app.controller('bookSearchController', function ($scope, bookService) {
             });
     };
 });
+
+
+

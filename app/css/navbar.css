@@ -5,6 +5,10 @@
     align-items: center;
     background-color: #3a8088;
     padding: 10px 20px;
+    position: sticky;
+    top: 0; /* Stick to the top */
+    width: 100%; /* Make sure it spans the full width */
+    z-index: 1000; /* Ensure it stays on top of other content when scrolling */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 

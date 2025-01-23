@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="book-container">
+        <h1 class="page-title">All Books</h1>
         <div ng-if="loading" class="loading-message">Loading Books...</div>
         <div class="book-grid">
             <!-- Corrected the bindings to match the mapped structure -->
@@ -26,6 +27,7 @@
 
         <p>Page {{ currentPage }}</p>
     </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="/app/controller/viewBooksController.js"></script>
 </body>
 </html>

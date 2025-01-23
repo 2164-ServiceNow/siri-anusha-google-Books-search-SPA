@@ -10,27 +10,56 @@
 <body>
    
     <div>
-        <h1>{{ message }}</h1>
+        <h1 title >{{ message }}</h1>
         <p>Your one-stop destination to explore, discover, and dive into the world of books</p>
        
        <a href="/books">View All Books</a>
         <br>
     </div>
 
-    <div ng-controller="bookSearchController">
+    <!-- <div ng-controller="bookSearchController">
         <h1>Book Search</h1>
         <input type="text" ng-model="searchQuery" placeholder="Enter Book name" />
         <button ng-click="searchBooks()">Search</button>
         <button ng-click="searchforBooks()">Search1</button>
 
-        <div ng-if="bookData">
+        <div ng-if="books">
             <h2>Book Details:</h2>
-            <p><strong>Name:</strong> {{ bookData.title }}</p>
-            <p><strong>Description:</strong> {{ bookData.overview }}</p>
+            <p><strong>Name:</strong> {{ books[0].volumeInfo.title }}</p>
+            <p><strong>Description:</strong> {{ books[0].volumeInfo.description}}</p>
             <img ng-src="https://image.tmdb.org/t/p/w500{{ movieData.poster_path }}" alt="{{ movie.title }}" class="movie-poster">
-            <p><strong>Release Date:</strong>{{ bookData.release_date }}</p>
+            <p><strong>Release Date:</strong>{{ books.release_date }}</p>
+        </div>
+    </div> -->
+    <div ng-controller="bookSearchController">
+        <h1>Book Search</h1>
+        <input type="text" ng-model="searchQuery" placeholder="Enter Book name" />
+        <button ng-click="searchBooks()">Search</button>
+        <button ng-click="searchforBooks()">Search1</button>
+    
+        <div ng-if="books && books.length > 0">
+            <h2>Search Results:</h2>
+            <div ng-repeat="book in books" class="book-card">
+                <h3>{{ book.volumeInfo.title }}</h3>
+                <p><strong>Author(s):</strong> {{ book.volumeInfo.authors.join(', ') }}</p>
+                <p><strong>Publisher:</strong> {{ book.volumeInfo.publisher }}</p>
+                <p><strong>Published Date:</strong> {{ book.volumeInfo.publishedDate }}</p>
+                <p><strong>Category:</strong> {{ book.volumeInfo.categories ? book.volumeInfo.categories.join(', ') : 'N/A' }}</p>
+                <p><strong>Description:</strong> {{ book.volumeInfo.description || 'No description available.' }}</p>
+                <img 
+                    ng-src="{{ book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'placeholder.jpg' }}" 
+                    alt="{{ book.volumeInfo.title }}" 
+                    class="book-thumbnail">
+                <p><strong>Page Count:</strong> {{ book.volumeInfo.pageCount }}</p>
+                <p><strong>Language:</strong> {{ book.volumeInfo.language | uppercase }}</p>
+                <p><strong>Preview Link:</strong> <a href="{{ book.volumeInfo.previewLink }}" target="_blank">Preview</a></p>
+            </div>
+        </div>
+        <div ng-if="!books || books.length === 0">
+            <p>No books found. Try a different search.</p>
         </div>
     </div>
+    
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>

@@ -15,7 +15,7 @@ body {
 .page-title {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #333;
+    color: #eee9e9;
 }
 
 /* Grid Layout for Books */
@@ -28,7 +28,7 @@ body {
 }
 
 .book-card {
-    background: white;
+    background: rgb(243, 197, 197);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
