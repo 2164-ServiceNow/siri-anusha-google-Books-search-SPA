@@ -13,7 +13,7 @@
         <h1 title >{{ message }}</h1>
         <p>Your one-stop destination to explore, discover, and dive into the world of books</p>
        
-       <a href="/books">View All Books</a>
+       <!-- <a href="/books">View All Books</a> -->
         <br>
     </div>
 
@@ -35,7 +35,7 @@
         <h1>Book Search</h1>
         <input type="text" ng-model="searchQuery" placeholder="Enter Book name" />
         <button ng-click="searchBooks()">Search</button>
-        <button ng-click="searchforBooks()">Search1</button>
+        <!-- <button ng-click="searchforBooks()">Search1</button> -->
     
         <div ng-if="books && books.length > 0">
             <h2>Search Results:</h2>
@@ -46,6 +46,7 @@
                 <p><strong>Published Date:</strong> {{ book.volumeInfo.publishedDate }}</p>
                 <p><strong>Category:</strong> {{ book.volumeInfo.categories ? book.volumeInfo.categories.join(', ') : 'N/A' }}</p>
                 <p><strong>Description:</strong> {{ book.volumeInfo.description || 'No description available.' }}</p>
+                <a ng-href="{{book.saleInfo.buyLink}}" target="_blank">Buy this book</a>
                 <img 
                     ng-src="{{ book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'placeholder.jpg' }}" 
                     alt="{{ book.volumeInfo.title }}" 

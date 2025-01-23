@@ -15,18 +15,18 @@ app.service('bookService', function ($http) {
             });
     };
     
-    this.searchforBooks = function (query) {
-        const searchUrl = `https://www.googleapis.com/books/v1/volumes?q=${query}+inauthor:${query}&key=${API_KEY}`;
-        return $http.get(searchUrl)
-            .then(response => {
-                console.log("books", response.data);
-                return response.data; // Ensure the data is returned
-            })
-            .catch(error => {
-                console.error(`Error searching for books with query "${query}":`, error);
-                return null;
-            });
-    };
+    // this.searchforBooks = function (query) {
+    //     const searchUrl = `https://www.googleapis.com/books/v1/volumes?q=${query}+inauthor:${query}&key=${API_KEY}`;
+    //     return $http.get(searchUrl)
+    //         .then(response => {
+    //             console.log("books", response.data);
+    //             return response.data; // Ensure the data is returned
+    //         })
+    //         .catch(error => {
+    //             console.error(`Error searching for books with query "${query}":`, error);
+    //             return null;
+    //         });
+    // };
     
     // Fetch detailed information about a specific book by its ID
     this.getBookDetails = function (bookId) {

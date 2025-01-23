@@ -34,30 +34,30 @@ app.controller('bookSearchController', function ($scope, bookService) {
     };
     
 
-    $scope.searchforBooks = function () {
-        if (!$scope.searchQuery.trim()) {
-            alert('Please enter a search query.');
-            return;
-        }
+    // $scope.searchforBooks = function () {
+    //     if (!$scope.searchQuery.trim()) {
+    //         alert('Please enter a search query.');
+    //         return;
+    //     }
 
-        $scope.loading = true;
-        bookService.searchforBooks($scope.searchQuery)
-            .then(data => {
-                if (data && data.items) {
-                    console.log("searchforBooks")
-                    $scope.books = data.items;
-                } else {
-                    $scope.books = [];
-                    alert('No books found for the given query.');
-                }
-                $scope.loading = false;
-            })
-            .catch(error => {
-                console.error('Error searching books:', error);
-                alert('An error occurred while searching for books.');
-                $scope.loading = false;
-            });
-    };
+    //     $scope.loading = true;
+    //     bookService.searchforBooks($scope.searchQuery)
+    //         .then(data => {
+    //             if (data && data.items) {
+    //                 console.log("searchforBooks")
+    //                 $scope.books = data.items;
+    //             } else {
+    //                 $scope.books = [];
+    //                 alert('No books found for the given query.');
+    //             }
+    //             $scope.loading = false;
+    //         })
+    //         .catch(error => {
+    //             console.error('Error searching books:', error);
+    //             alert('An error occurred while searching for books.');
+    //             $scope.loading = false;
+    //         });
+    // };
     
     // Get book details by ID
     $scope.getBookDetails = function (bookId) {

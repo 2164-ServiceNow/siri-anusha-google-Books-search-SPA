@@ -9,7 +9,7 @@
     top: 0; /* Stick to the top */
     width: 100%; /* Make sure it spans the full width */
     z-index: 1000; /* Ensure it stays on top of other content when scrolling */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
 }
 
 /* Logo container */
@@ -90,6 +90,6 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Adjust transparency (50%) */
+    /* background-color: rgba(0, 0, 0, 0.5); Adjust transparency (50%) */
     z-index: -1; /* Ensures the overlay is behind all content */
 }
