@@ -21,12 +21,12 @@
 
     <div ng-controller="bookSearchController">
         <h1>Book Search</h1>
-        <input type="text" ng-model="searchQuery" placeholder="Enter movie name" />
+        <input type="text" ng-model="searchQuery" placeholder="Enter book name" />
         <button ng-click="searchBooks()">Search</button>
         <button ng-click = "searchforBooks()">search1</button>
 
         <div ng-if="bookData">
-            <h2>Movie Details:</h2>
+            <h2>book Details:</h2>
             <p><strong>Name:</strong> {{ bookData.title }}</p>
             <p><strong>Description:</strong> {{ bookData.overview }}</p>
             <img ng-src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}" class="movie-poster">

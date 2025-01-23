@@ -6,28 +6,30 @@ app.controller('bookSearchController', function ($scope, bookService) {
 
     // Search books based on a query
     $scope.searchBooks = function () {
-        if (!$scope.searchQuery.trim()) {
-            alert('Please enter a search query.');
-            return;
-        }
-
-        $scope.loading = true;
-        bookService.searchBooks($scope.searchQuery)
-            .then(data => {
-                if (data && data.items) {
-                    $scope.books = data.items;
-                } else {
+        if ($scope.searchQuery) {
+            $scope.loading = true;
+            bookService.searchBooks($scope.searchQuery)
+                .then(function (data) {
+                    if (data && data.items && data.items.length > 0) {
+                        $scope.books = data.items; // Assuming we're showing all book results
+                        $scope.error = null;
+                    } else {
+                        $scope.books = [];
+                        $scope.error = 'No books found. Please try a different query.';
+                    }
+                    $scope.loading = false;
+                })
+                .catch(function () {
+                    $scope.error = 'Error fetching books. Please try again later.';
                     $scope.books = [];
-                    alert('No books found for the given query.');
-                }
-                $scope.loading = false;
-            })
-            .catch(error => {
-                console.error('Error searching books:', error);
-                alert('An error occurred while searching for books.');
-                $scope.loading = false;
-            });
+                    $scope.loading = false;
+                });
+        } else {
+            $scope.error = 'Please enter a search query.';
+            $scope.books = [];
+        }
     };
+    
 
     $scope.searchforBooks = function () {
         if (!$scope.searchQuery.trim()) {
