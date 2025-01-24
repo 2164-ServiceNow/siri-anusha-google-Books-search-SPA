@@ -7,7 +7,7 @@ app.service('bookService', function ($http) {
         return $http.get(searchUrl)
             .then(response => {
                 console.log(response.data);
-                return response.data; // Ensure the data is returned
+                return response.data; 
             })
             .catch(error => {
                 console.error(`Error searching for books with query "${query}" and order "${orderBy}":`, error);
@@ -39,8 +39,8 @@ app.service('bookService', function ($http) {
             });
     };
 
-    // Fetch books from the user's Google Books "My Library" bookshelves (requires authentication)
-    // Note: This won't work without authentication, so this API call assumes a valid OAuth token is required.
+    // Fetch books from the user's Google Books "My Library" bookshelves (
+    
     this.getBooksFromLibrary = function () {
         const bookshelfUrl = `${BASE_URL}/mylibrary/bookshelves?key=${API_KEY}`;
         return $http.get(bookshelfUrl)

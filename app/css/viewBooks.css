@@ -21,8 +21,8 @@ body {
 /* Grid Layout for Books */
 .book-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
-    gap: 20px; /* Spacing between cards */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 20px; 
     justify-items: center;
     padding: 10px;
 }
@@ -34,11 +34,10 @@ body {
     overflow: hidden;
     transition: transform 0.2s ease-in-out;
     text-align: center;
-    width: 200px; /* Fixed width for consistent layout */
+    width: 200px;
 }
-
 .book-card:hover {
-    transform: scale(1.05); /* Zoom effect on hover */
+    transform: scale(1.05); 
 }
 
 .book-thumbnail {

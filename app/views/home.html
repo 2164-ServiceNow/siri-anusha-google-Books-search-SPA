@@ -10,8 +10,8 @@
 <body>
    
     <div>
-        <h1 title >{{ message }}</h1>
-        <p>Your one-stop destination to explore, discover, and dive into the world of books</p>
+        <!-- <h1 title >{{ message }}</h1>
+        <p>Your one-stop destination to explore, discover, and dive into the world of books</p> -->
        
        <!-- <a href="/books">View All Books</a> -->
         <br>
@@ -75,11 +75,11 @@
                 <p><strong>Language:</strong> {{ book.volumeInfo.language | uppercase }}</p>-->
                 <p>
                     <a href="{{ book.volumeInfo.previewLink }}" target="_blank">Preview</a></p>
-                    <!-- <strong>buy from goole:</strong><a ng-href="{{book.saleInfo.buyLink}}" target="_blank">Buy this book</a> -->
+                    <a ng-href="{{book.saleInfo.buyLink}}" target="_blank">Buy this book</a>
             </div>
         </div>
         <div ng-if="!books || books.length === 0">
-            <p>Search Here!</p>
+            <!-- <p>Search Here!</p> -->
         </div>
     </div>
     

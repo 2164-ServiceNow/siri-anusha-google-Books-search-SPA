@@ -23,8 +23,8 @@
             <!-- Display sorted books -->
             <div class="book-card" ng-repeat="book in books">
                 <img ng-src="{{ book.thumbnail }}" alt="{{ book.title }}" class="book-thumbnail">
-                <h2 class="book-title">{{ book.title }}</h2>
-                <p class="book-authors">{{ book.authors }}</p>
+                <h2 class="book-title">{{ book.volumeInfo.title }}</h2>
+                <p class="book-authors">{{ book.volumeInfo.authors }}</p>
                 <p class="book-date"><strong>Published:</strong> {{ book.publishedDate }}</p>
             </div>
         </div>
