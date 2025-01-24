@@ -32,7 +32,12 @@ app.controller('bookSearchController', function ($scope, bookService) {
             $scope.books = [];
         }
     };
+   
+    $scope.closeBookDetails = function(){
+        $scope.selectedBook = null;
+    }
     
+
 
     // $scope.searchforBooks = function () {
     //     if (!$scope.searchQuery.trim()) {
@@ -98,6 +103,24 @@ app.controller('bookSearchController', function ($scope, bookService) {
                 $scope.loading = false;
             });
     };
+
+    $scope.nextPage = function () {
+        if (!$scope.loading) {
+            $scope.currentPage++;
+            $scope.fetchBooks($scope.currentPage);
+        }
+    };
+
+    $scope.prevPage = function () {
+        if ($scope.currentPage > 1 && !$scope.loading) {
+            $scope.currentPage--;
+            $scope.fetchBooks($scope.currentPage);
+        }
+    };
+
+    // Initial fetch of books
+    // $scope.fetchBooks($scope.currentPage);
+   
 });
 
 

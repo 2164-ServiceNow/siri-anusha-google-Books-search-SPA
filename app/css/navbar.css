@@ -8,8 +8,9 @@
     position: sticky;
     top: 0; /* Stick to the top */
     width: 100%; /* Make sure it spans the full width */
-    z-index: 1000; /* Ensure it stays on top of other content when scrolling */
+    z-index: 1000; /* Ensuring it stays on top of other content when scrolling */
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+    margin-bottom: 60px;
 }
 
 /* Logo container */
@@ -92,4 +93,19 @@ body::before {
     height: 100%;
     /* background-color: rgba(0, 0, 0, 0.5); Adjust transparency (50%) */
     z-index: -1; /* Ensures the overlay is behind all content */
+}
+h1 {
+    color: #600404;
+    font-size: 3rem;
+    margin-top:50px;
+   
+    text-align: center;
+}
+
+p {
+    color:  rgb(92, 32, 32);
+    font-size: 1.6rem;
+    text-align: center;
+    margin-top:50px;
+    margin-bottom: 30px;
 }

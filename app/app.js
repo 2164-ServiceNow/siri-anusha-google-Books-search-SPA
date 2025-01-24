@@ -20,9 +20,7 @@ app.config(function ($routeProvider, $locationProvider) {
             controller: 'bookDetailsController'
         })
 
-        .otherwise({
-            redirectTo: '/books'
-        });
+        
 
     $locationProvider.html5Mode({
         enabled: true,
