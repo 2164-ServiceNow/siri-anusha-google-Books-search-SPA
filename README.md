@@ -18,14 +18,14 @@ This project is a Single Page Application(SPA) built using Angular, HTML, CSS, a
 
 ## User Stories:
 
-- As a user, I can search for books by title, author, or ISBN.
-- As a user, I can click on a book from the search results and view its detailed information, including its description, authors, and publication date.
-- As a user, I can find and download free books so that i can access them offline.
-- As a user, I can sort search results by relevance, publication date, or title so that i can view books in my preferred order.
-- As a user, I can have  preview of the book 
-- AS a user, I can see recommeded for related books based on the one I an viewing
+- As a user, I can search for books.
+- As a user, I can get detailed information, including its description, authors, and publishers from the search results.
+- As a user, I can sort search results by relevance, newest.
+- As a user, I can have preview of the book 
+- AS a user, I can see recommend BestSellers
 - As a user, I want the application to be responsive and accessible on different devices & screen sizes.
-- As a  user, I want to find books available in specific country so that i can access region-specific content.
+- As a  user, I want to find books available to buy.
+- As a user, I want to filter the books.
 
 ## Development Environment Setup:
 
