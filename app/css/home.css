@@ -5,7 +5,6 @@ body {
     padding: 0;
     background-color: #f4f4f4;
 }
-
 h1 {
     font-size: 2em;
     color: #333;
@@ -19,7 +18,6 @@ p {
     text-align: center;
     margin-bottom: 30px;
 }
-
 .book-container {
     width: 80%;
     margin: 20px auto;
